@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>30-NUMBER MEGA DRAW</title>
+    <title>30-NUMBER VIP DRAW</title>
     <style>
         :root {
             --neon-blue: #00d2ff;
@@ -13,7 +13,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             background-color: var(--bg-dark);
             color: white;
             margin: 0;
@@ -41,16 +41,16 @@
             border: 1px solid #333;
             padding: 10px;
             border-radius: 10px;
-            width: 40%;
+            width: 42%;
         }
 
-        .prize-box h4 { margin: 0; font-size: 12px; color: #aaa; }
-        .prize-box p { margin: 5px 0 0; font-weight: bold; color: var(--neon-pink); }
+        .prize-box h4 { margin: 0; font-size: 11px; color: #aaa; text-transform: uppercase; }
+        .prize-box p { margin: 5px 0 0; font-weight: bold; color: var(--neon-pink); font-size: 18px; }
 
         .grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 12px;
+            gap: 10px;
             max-width: 400px;
             margin: 0 auto;
         }
@@ -62,7 +62,7 @@
             color: white;
             font-size: 18px;
             font-weight: bold;
-            border-radius: 12px;
+            border-radius: 10px;
             cursor: pointer;
             transition: 0.3s;
         }
@@ -71,7 +71,6 @@
             background: var(--neon-blue);
             color: black;
             box-shadow: 0 0 20px var(--neon-blue);
-            border: none;
             transform: scale(1.1);
         }
 
@@ -81,13 +80,16 @@
             background: var(--card-bg);
             padding: 20px;
             border-radius: 20px;
-            border-top: 4px solid var(--neon-pink);
+            border: 1px solid var(--neon-pink);
+            animation: slideIn 0.4s ease-out;
         }
+
+        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         .qr-image {
             width: 100%;
-            max-width: 220px;
-            border: 2px solid white;
+            max-width: 250px;
+            border: 3px solid white;
             border-radius: 10px;
             margin: 15px 0;
         }
@@ -101,35 +103,37 @@
             border-radius: 10px;
             font-weight: bold;
             font-size: 16px;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
         }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <h2 style="margin:0; letter-spacing: 2px;">30-NUMBER DRAW</h2>
+        <h2 style="margin:0; letter-spacing: 2px; color: var(--neon-blue);">VIP MEGA DRAW</h2>
         <div class="prize-pool">
             <div class="prize-box">
-                <h4>1st PRIZE</h4>
+                <h4>1st Prize</h4>
                 <p>₹600</p>
             </div>
             <div class="prize-box">
-                <h4>2nd PRIZE</h4>
+                <h4>2nd Prize</h4>
                 <p>₹200</p>
             </div>
         </div>
+        <p style="font-size: 12px; margin-top: 10px; color: #00ff88;">Ticket Price: ₹20</p>
     </div>
 
     <div class="grid" id="grid"></div>
 
     <div id="payment-area">
-        <h3>Lucky Number: <span id="selNum" style="color:var(--neon-blue)">--</span></h3>
-        <p style="font-size: 14px; color: #888;">Niche diye gaye QR par payment karein</p>
+        <h3 style="margin:0">Number Chuna: <span id="selNum" style="color:var(--neon-blue)">--</span></h3>
+        <p style="font-size: 13px; color: #888; margin: 10px 0;">QR Scan karein aur WhatsApp par screenshot bhejin</p>
         
         <img src="IMG_4536.jpeg" class="qr-image" alt="QR Code">
         
         <a id="waLink" href="#" target="_blank" class="btn-wa">
-            ✅ WhatsApp Par Screenshot Bheinjein
+            ✅ WhatsApp Screenshot
         </a>
     </div>
 
@@ -137,7 +141,6 @@
         const grid = document.getElementById('grid');
         const waNumber = "918521694137";
 
-        // Sirf 30 numbers ke liye grid
         for (let i = 1; i <= 30; i++) {
             let btn = document.createElement('button');
             btn.innerText = i;
@@ -149,7 +152,7 @@
                 document.getElementById('payment-area').style.display = 'block';
                 document.getElementById('selNum').innerText = i;
                 
-                let msg = `*30-NUMBER DRAW ENTRY*\n\n*Lucky Number:* ${i}\n*Prize Target:* ₹600 / ₹200\n\nKripya meri ticket confirm karein.`;
+                let msg = `*VIP DRAW ENTRY*\n\n*Lucky Number:* ${i}\n*Target:* ₹600 / ₹200\n\nKripya confirm karein!`;
                 document.getElementById('waLink').href = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
                 
                 document.getElementById('payment-area').scrollIntoView({behavior: 'smooth'});
