@@ -3,184 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIP Lucky Draw | 1-99</title>
+    <title>30-NUMBER MEGA DRAW</title>
     <style>
         :root {
-            --primary-neon: #00ff88;
-            --bg-dark: #0f172a;
-            --card-bg: #1e293b;
-            --text-light: #f8fafc;
+            --neon-blue: #00d2ff;
+            --neon-pink: #ff007f;
+            --bg-dark: #050505;
+            --card-bg: #111111;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Segoe UI', Roboto, sans-serif;
             background-color: var(--bg-dark);
-            color: var(--text-light);
+            color: white;
             margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding: 15px;
+            text-align: center;
         }
 
         .header {
-            text-align: center;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            border: 2px solid var(--neon-blue);
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px var(--neon-blue);
+            margin-bottom: 25px;
+            background: rgba(0, 210, 255, 0.05);
         }
 
-        .header h1 {
-            color: var(--primary-neon);
-            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
-            margin-bottom: 5px;
+        .prize-pool {
+            display: flex;
+            justify-content: space-around;
+            margin: 15px 0;
         }
 
-        .price-badge {
-            background: rgba(0, 255, 136, 0.1);
-            border: 1px solid var(--primary-neon);
-            padding: 5px 20px;
-            border-radius: 50px;
-            font-size: 14px;
-            color: var(--primary-neon);
-        }
-
-        .grid-container {
+        .prize-box {
             background: var(--card-bg);
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            max-width: 500px;
-            width: 100%;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid #333;
+            padding: 10px;
+            border-radius: 10px;
+            width: 40%;
         }
+
+        .prize-box h4 { margin: 0; font-size: 12px; color: #aaa; }
+        .prize-box p { margin: 5px 0 0; font-weight: bold; color: var(--neon-pink); }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            max-width: 400px;
+            margin: 0 auto;
         }
 
         .num-btn {
             aspect-ratio: 1;
-            background: #334155;
-            border: none;
+            background: #222;
+            border: 1px solid #444;
             color: white;
+            font-size: 18px;
             font-weight: bold;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 14px;
-        }
-
-        .num-btn:hover {
-            background: #475569;
-            transform: translateY(-2px);
+            transition: 0.3s;
         }
 
         .num-btn.selected {
-            background: var(--primary-neon);
-            color: var(--bg-dark);
-            box-shadow: 0 0 20px var(--primary-neon);
+            background: var(--neon-blue);
+            color: black;
+            box-shadow: 0 0 20px var(--neon-blue);
+            border: none;
             transform: scale(1.1);
         }
 
-        #payment-section {
+        #payment-area {
             display: none;
-            margin-top: 30px;
+            margin-top: 25px;
             background: var(--card-bg);
-            padding: 25px;
+            padding: 20px;
             border-radius: 20px;
+            border-top: 4px solid var(--neon-pink);
+        }
+
+        .qr-image {
             width: 100%;
-            max-width: 400px;
-            text-align: center;
-            border: 2px solid var(--primary-neon);
-            animation: fadeIn 0.5s ease-out;
+            max-width: 220px;
+            border: 2px solid white;
+            border-radius: 10px;
+            margin: 15px 0;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .qr-img {
-            width: 100%;
-            max-width: 200px;
-            border-radius: 15px;
-            margin: 20px 0;
-            border: 4px solid white;
-        }
-
-        .btn-whatsapp {
+        .btn-wa {
+            display: block;
             background: #25D366;
             color: white;
-            text-decoration: none;
-            padding: 15px 30px;
-            border-radius: 12px;
-            display: inline-block;
-            font-weight: bold;
-            margin-top: 15px;
-            width: 100%;
-            box-sizing: border-box;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-        }
-
-        .winner-board {
-            margin-top: 40px;
-            width: 100%;
-            max-width: 500px;
-            text-align: left;
-        }
-
-        .winner-card {
-            background: rgba(255, 255, 255, 0.05);
             padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            border-left: 4px solid var(--primary-neon);
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 16px;
         }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <h1>VIP DRAW</h1>
-        <div class="price-badge">Entry: ₹20 Only</div>
+        <h2 style="margin:0; letter-spacing: 2px;">30-NUMBER DRAW</h2>
+        <div class="prize-pool">
+            <div class="prize-box">
+                <h4>1st PRIZE</h4>
+                <p>₹600</p>
+            </div>
+            <div class="prize-box">
+                <h4>2nd PRIZE</h4>
+                <p>₹200</p>
+            </div>
+        </div>
     </div>
 
-    <div class="grid-container">
-        <div class="grid" id="numberGrid"></div>
-    </div>
+    <div class="grid" id="grid"></div>
 
-    <div id="payment-section">
-        <h2 style="margin:0">Number <span id="selectedNum" style="color:var(--primary-neon)">--</span></h2>
-        <p style="color: #94a3b8">Scan QR and Send Screenshot</p>
+    <div id="payment-area">
+        <h3>Lucky Number: <span id="selNum" style="color:var(--neon-blue)">--</span></h3>
+        <p style="font-size: 14px; color: #888;">Niche diye gaye QR par payment karein</p>
         
-        <img src="IMG_4536.jpeg" class="qr-img" alt="QR Code">
+        <img src="IMG_4536.jpeg" class="qr-image" alt="QR Code">
         
-        <a id="whatsappLink" href="#" target="_blank" class="btn-whatsapp">
-            CONFIRM ON WHATSAPP
+        <a id="waLink" href="#" target="_blank" class="btn-wa">
+            ✅ WhatsApp Par Screenshot Bheinjein
         </a>
     </div>
 
-    <div class="winner-board">
-        <h3 style="color:var(--primary-neon)">LAST WINNERS 🏆</h3>
-        <div class="winner-card">
-            <span>Morning Draw</span>
-            <span style="font-weight:bold">#45 - ₹1,800</span>
-        </div>
-        <div class="winner-card" style="border-left-color: #fbbf24;">
-            <span>Evening Draw</span>
-            <span style="font-weight:bold">#12 - ₹1,800</span>
-        </div>
-    </div>
-
     <script>
-        const grid = document.getElementById('numberGrid');
+        const grid = document.getElementById('grid');
         const waNumber = "918521694137";
 
+        // Sirf 30 numbers ke liye grid
         for (let i = 1; i <= 30; i++) {
             let btn = document.createElement('button');
             btn.innerText = i;
@@ -189,23 +146,16 @@
                 document.querySelectorAll('.num-btn').forEach(b => b.classList.remove('selected'));
                 this.classList.add('selected');
                 
-                document.getElementById('payment-section').style.display = 'block';
-                document.getElementById('selectedNum').innerText = i;
+                document.getElementById('payment-area').style.display = 'block';
+                document.getElementById('selNum').innerText = i;
                 
-                let msg = `*VIP LOTTERY ENTRY*\n\n*Number:* ${i}\n*Status:* Payment Done\n\nKripya confirm karein!`;
-                document.getElementById('whatsappLink').href = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
+                let msg = `*30-NUMBER DRAW ENTRY*\n\n*Lucky Number:* ${i}\n*Prize Target:* ₹600 / ₹200\n\nKripya meri ticket confirm karein.`;
+                document.getElementById('waLink').href = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
                 
-                document.getElementById('payment-section').scrollIntoView({behavior: 'smooth'});
+                document.getElementById('payment-area').scrollIntoView({behavior: 'smooth'});
             };
             grid.appendChild(btn);
         }
     </script>
 </body>
 </html>
-<div class="winner-card">
-    <span>Morning Draw</span>
-    <span style="font-weight:bold">#45 - ₹1,800</span> </div>
-<div class="winner-card" style="border-left-color: #fbbf24;">
-    <span>Evening Draw</span>
-    <span style="font-weight:bold">#12 - ₹1,800</span> </div>
-
